@@ -1,0 +1,38 @@
+---
+title: "关于XXX的分析报告"
+author: "Fang Yongchao"
+date: "`Sys.Date()`"
+header-includes:
+   - \usepackage{multirow}
+   - \usepackage{booktabs}
+   - \usepackage{ctex}
+output:
+  rticles::ctex:
+    template: yabai.tex
+    fig_caption: yes
+    number_sections: yes
+    toc: yes
+    toc_depth: 3
+geometry:
+  a4paper,
+  left=2cm,
+  right=2cm,
+  top=4cm,
+  bottom=4cm
+abstract: |
+  xxxxxxxxxx
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# 背景与目的
+
+# 数据来源
+
+# 分析方法
+
+# 分析结果
+
+# 结论与建议

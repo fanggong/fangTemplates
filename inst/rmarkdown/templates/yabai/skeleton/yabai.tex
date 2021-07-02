@@ -462,11 +462,6 @@ $if(title)$
   $else$
     \maketitle
   $endif$
-  $if(abstract)$
-    \begin{abstract}
-      $abstract$
-    \end{abstract}
-  $endif$
 $endif$
 $for(include-before)$
   $include-before$
@@ -492,11 +487,19 @@ $if(toc)$
   }
   $endif$
 $endif$
+\newpage
 $if(lof)$
   \listoffigures
 $endif$
+\newpage
 $if(lot)$
   \listoftables
+$endif$
+\newpage
+$if(abstract)$
+  \begin{abstract}
+    $abstract$
+  \end{abstract}
 $endif$
 $if(linestretch)$
   \setstretch{$linestretch$}

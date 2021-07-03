@@ -43,3 +43,7 @@ vignettes/*.pdf
 
 # rsconnect file
 rsconnect/
+
+# produced templates
+*.log
+*.pdf

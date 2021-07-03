@@ -11,6 +11,7 @@ abstract: |
   在这里可以书写公式$E = mc^2$，也可以使用[链接](https://fanggong.pub)。
 output:
   bookdown::pdf_document2:
+    latex_engine: xelatex
     template: yabai.tex
 # ------------------------------------------------------------------------------
 

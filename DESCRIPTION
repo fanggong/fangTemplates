@@ -5,7 +5,9 @@ Authors@R:
     person(given = "Yongchao", family = "Fang", role = c("aut", "cre"), email = "yongchao.fang@outlook.com")
 Description: Collection of 'R markdown' templates for Chinese reports, vignettes etc. 
 Imports:
-  rticles(>=0.20)
+  rmarkdown,
+  tinytex,
+  bookdown
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true

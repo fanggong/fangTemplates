@@ -1,0 +1,196 @@
+---
+# META DATA --------------------------------------------------------------------
+title: "标题"
+subtitle: "副标题"
+author: 
+  - "作者甲"
+  - "作者乙"
+date: "`r Sys.Date()`"
+abstract: |-
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  摘要。在这里可以书写公式$E = mc^2$，也可以使用[链接](https://fanggong.pub)。
+  
+  关于R Markdown，最完整的参考资料必然是[R Markdown Cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/)，
+  但是在这个模板中，主要记录了一些常用的元素的书写方法，包括公式、图、表等等。
+output:
+  bookdown::pdf_document2:
+    latex_engine: xelatex
+    template: yabai.tex
+    includes:
+      in_header: usepackage.tex
+# ------------------------------------------------------------------------------
+
+# SETTINGS ---------------------------------------------------------------------
+documentclass: ctexart
+
+# See followed url for more information about variable for LaTeX
+# https://latexref.xyz/Document-class-options.html#Document-class-options
+indent: yes
+papersize: a4
+thanks:
+lof: yes
+lot: yes
+toc: yes
+toc-depth: 3
+numbersections: yes
+secnumdepth: 3
+classoption:
+  - onecolumn 
+  - oneside
+  - titlepage
+linestretch: 1.5
+links-as-notes: yes
+
+# See followed url for more information about geomtry
+# https://ctan.math.illinois.edu/macros/latex/contrib/geometry/geometry.pdf
+geometry:
+  - margin=2.4cm
+
+# See followed url for more information about hyperref
+# https://mirrors.rit.edu/CTAN/macros/latex/contrib/hyperref/doc/hyperref-doc.pdf
+hyperrefoptions:
+  - pageanchor=true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+library(dplyr)
+```
+
+# 文本
+
+## Markdown
+
+\label{start}
+**正态分布**最早是棣莫弗在1718年著作的书籍的 Doctrine of Change，及1734年发表的一篇关于二项分布文章中提出的，当二项随机变量的位置参数n很大及形状参数p为1/2时，则所推导出二项分布的近似分布函数就是正态分布。
+
+## R语言脚本
+
+本节内容通过下面的脚本生成，关键在于代码块设置中的`results='asis'`
+```{r results='asis'}
+for (var in names(iris)[1:4]) {
+  cat(sprintf("### %s\n\n", var))
+  cat(sprintf("在iris数据集中，变量%s的均值为%.2f，标准差为%.2f。\n\n",
+              var, mean(iris[,var]), sd(iris[, var])))
+}
+```
+
+## Latex
+
+所有的Latex语法在这里都可以正常使用。
+
+# 公式{#formula}
+
+## **\$**符号
+
+使用**\$**来生成行内公式：
+```{}
+$<equation>$
+```
+
+正态分布的概率密度函数是$f(x;\mu,\sigma)={1 \over {\sigma \sqrt{2\pi}}} \exp \left( -{(x-\mu)^2 \over {2\sigma^2}} \right)$。
+
+使用**\$\$**来生成行间公式：
+```{}
+$$<equation>$$
+```
+
+正态分布的概率密度函数是 
+$$
+f(x;\mu,\sigma) = {1 \over {\sigma \sqrt{2\pi}}} \exp \left( -{(x-\mu)^2 \over {2\sigma^2}} \right) 
+$$ 
+
+## Latex {#equ-ref}
+
+用**\$**来生成公式就是使用的Latex的写法，但是当我们需要对公式进行引用时，需要使用下面的写法。
+```{}
+\begin{equation}
+<equation>
+\end{equation}
+```
+
+公式\ref{eq:norm}为正态分布的概率密度函数。
+
+\begin{equation}
+\label{eq:norm}
+f(x;\mu,\sigma) = {1 \over {\sigma \sqrt{2\pi}}} \exp \left( -{(x-\mu)^2 \over {2\sigma^2}} \right) 
+\end{equation}
+
+# 图
+
+## 直接生成
+
+在图\ref{fig:iris-dis}中展示了鸢尾花花萼的长度和宽度的分布情况
+
+```{r iris-dis, echo=FALSE, fig.cap="鸢尾花花萼形状分布"}
+library(ggplot2)
+dat <- iris
+ggplot(dat, aes(Sepal.Length, Sepal.Width)) +
+  geom_point(aes(color = Species))
+```
+
+## 使用本地图片
+
+使用R语言脚本导入：
+```{r eval=FALSE}
+knitr::include_graphics("<path-to-graph>")
+```
+
+**这里当然也可以使用Markdown语法导入**
+
+# 表格
+
+## Markdown
+
+可以使用Markdown语法绘制表格，但是太落后了，就不写demo了。
+
+## R语言脚本
+
+### `kableExtra`包
+
+表\ref{tab:iris}使用`kableExtra`包生成，更多参数使用细节参考[kableExtra包文档](https://haozhu233.github.io/kableExtra/awesome_table_in_pdf.pdf)
+
+```{r iris}
+library(kableExtra)
+kbl(iris[1:5, 1:5], booktabs = TRUE, caption = "iris数据集的部分展示") %>% 
+  kable_styling(latex_options = c("hold_position"))
+```
+
+### `pander`包
+
+表\ref{mtcars}使用`pander`包生成，更多参数使用细节参考[pander包文档](https://rapporter.github.io/pander/)。
+
+```{r}
+pander::pander(mtcars[1:5, 1:5], caption = "mtcars数据集的部分展示\\label{mtcars}")
+```
+
+## Latex
+
+用Latex画表格实在不是一个聪明的做法。
+
+# 引用
+
+## 对R语言脚本生成元素的引用
+
+通过R语言代码块插入图片（直接生成或使用本地图片）时，可以使用以下形式进行引用。
+```{}
+\ref{fig:<code-chunk-name>}
+```
+
+通过`kableExtra`包插入表格时，可以使用以下形式进行引用。
+```{}
+\ref{tab:<code-chunk-name>}
+```
+
+通过`pander`包插入表格时，需要在表格标题上加上`\label{<id>}`，然后通过`\ref{<id>}`进行引用。
+
+## 对公式引用
+
+见\ref{equ-ref}
+
+## 对其它元素的引用
+
+对其它元素的引用基本上都可以使用Latex的语法实现。即在需要被引用的地方添加`\label{<id>}`，然后在引用的地方添加`\ref{<id>}`。
+
+在\ref{start}我们对正态分布进行了说明。
+

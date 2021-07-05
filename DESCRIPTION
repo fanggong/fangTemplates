@@ -7,7 +7,11 @@ Description: Collection of 'R markdown' templates for Chinese reports, vignettes
 Imports:
   rmarkdown,
   tinytex,
-  bookdown
+  bookdown,
+  kableExtra,
+  dplyr,
+  ggplot2,
+  pander
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true

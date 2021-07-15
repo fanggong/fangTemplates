@@ -1,0 +1,6 @@
+---
+output:
+  bookdown::pdf_document2:
+    latex_engine: xelatex
+    template: template.tex
+---

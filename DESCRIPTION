@@ -3,7 +3,7 @@ Title: Fang's R Markdown Templates
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "Yongchao", family = "Fang", role = c("aut", "cre"), email = "yongchao.fang@outlook.com")
-Description: Collection of 'R markdown' templates for Chinese reports, vignettes etc. 
+Description: Collection of 'Rmarkdown' templates for Chinese reports, vignettes etc. 
 Imports:
   rmarkdown,
   tinytex,

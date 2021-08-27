@@ -1,5 +1,4 @@
 ---
-# META DATA --------------------------------------------------------------------
 title: "标题"
 subtitle: "副标题"
 author: 
@@ -7,49 +6,23 @@ author:
   - "作者乙"
 date: "`r Sys.Date()`"
 abstract: |-
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   摘要。在这里可以书写公式$E = mc^2$，也可以使用[链接](https://fanggong.pub)。
   
-  关于R Markdown，最完整的参考资料必然是[R Markdown Cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/)，
-  但是在这个模板中，主要记录了一些常用的元素的书写方法，包括公式、图、表等等。
+  关于R Markdown，最完整的参考资料是[R Markdown Cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/)，
+  但是在这个模板中，记录了一些常用的元素的书写方法，包括公式、图、表等等。
 output:
-  bookdown::pdf_document2:
-    latex_engine: xelatex
-    template: yabai.tex
-    includes:
-      in_header: usepackage.tex
-# ------------------------------------------------------------------------------
-
-# SETTINGS ---------------------------------------------------------------------
+  fangTemplates::yabai_pdf
+# see https://pandoc.org/MANUAL.html#variables for more available variables
 documentclass: ctexart
-
-# See followed url for more information about variable for LaTeX
-# https://latexref.xyz/Document-class-options.html#Document-class-options
-indent: yes
-papersize: a4
-thanks:
-lof: yes
-lot: yes
-toc: yes
-toc-depth: 3
-numbersections: yes
-secnumdepth: 3
-classoption:
-  - onecolumn 
-  - oneside
-  - titlepage
-linestretch: 1.5
-links-as-notes: yes
-
-# See followed url for more information about geomtry
-# https://ctan.math.illinois.edu/macros/latex/contrib/geometry/geometry.pdf
 geometry:
   - margin=2.4cm
-
-# See followed url for more information about hyperref
-# https://mirrors.rit.edu/CTAN/macros/latex/contrib/hyperref/doc/hyperref-doc.pdf
-hyperrefoptions:
-  - pageanchor=true
+indent: true
+lof: true
+lot: true
+linestretch: 1.5
+links-as-notes: true
+lof-newpage: false
+lot-newpage: false
 ---
 
 ```{r setup, include=FALSE}
@@ -83,17 +56,11 @@ for (var in names(iris)[1:4]) {
 
 ## **\$**符号
 
-使用**\$**来生成行内公式：
-```{}
-$<equation>$
-```
+使用**\$**来生成行内公式：`$<equation>$`
 
 正态分布的概率密度函数是$f(x;\mu,\sigma)={1 \over {\sigma \sqrt{2\pi}}} \exp \left( -{(x-\mu)^2 \over {2\sigma^2}} \right)$。
 
-使用**\$\$**来生成行间公式：
-```{}
-$$<equation>$$
-```
+使用**\$\$**来生成行间公式：`$$<equation>$$`
 
 正态分布的概率密度函数是 
 $$
@@ -102,9 +69,10 @@ $$
 
 ## Latex {#equ-ref}
 
-用**\$**来生成公式就是使用的Latex的写法，但是当我们需要对公式进行引用时，需要使用下面的写法。
+用**\$**符号来生成公式就是使用的Latex的写法，但是当我们需要对公式进行引用时，需要使用下面的写法。
 ```{}
 \begin{equation}
+\label{id}
 <equation>
 \end{equation}
 ```
@@ -192,5 +160,5 @@ pander::pander(mtcars[1:5, 1:5], caption = "mtcars数据集的部分展示\\labe
 
 对其它元素的引用基本上都可以使用Latex的语法实现。即在需要被引用的地方添加`\label{<id>}`，然后在引用的地方添加`\ref{<id>}`。
 
-在\ref{start}我们对正态分布进行了说明。
+例如：在\ref{start}我们对正态分布进行了说明。
 

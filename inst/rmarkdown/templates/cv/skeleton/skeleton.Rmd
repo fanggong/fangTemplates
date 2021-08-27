@@ -1,6 +1,156 @@
 ---
-output:
-  bookdown::pdf_document2:
-    latex_engine: xelatex
-    template: template.tex
+output: fangTemplates::cv
+photo: "photo_ori.jpg"
+name: "方\\ 涌超"
+job-title: "数据分析工程师"
+birthdate: "1991-06-11"
+address: "四川/成都"
+phone-number: "18179359123"
+site: "https://fanggong.pub"
+mail: "yongchao.fang\\@outlook.com"
+about-me: |
+  什么也不会\
+  什么都略懂
+skills:
+  - {skill: 日语, point: 5}
+  - {skill: 英语, point: 4}
+  - {skill: 项目管理, point: 4}
+  - {skill: 机器学习, point: 4.5}
+  - {skill: 数据可视化, point: 5}
+  - {skill: Python, point: 4.5}
+  - {skill: R语言, point: 5.5}
 ---
+
+```{r echo=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+\makeprofile
+
+# Education
+
+```{r}
+education <- list(
+  list(
+    duration = "2016/04 - 2019/04", 
+    speciality = "筑波大学\\ 系统情报工学\\ 硕士学位",
+    address = "日本/筑波",
+    description = "消费者行为分析方向，硕士论文内容为基于酒店评论的消费者满意度影响因素分析"
+  ),
+  list(
+    duration = "2009/07 - 2013/07", 
+    speciality = "北京理工大学\\ 数学与应用数学\\ 学士学位",
+    address = "中国/北京",
+    description = "数学与计算机基础，包括但不限于数学分析，概率论与数理统计，线性代数，多元统计分析，算法与数据结构等"
+  )
+)
+```
+
+```{r results='asis'}
+fangTemplates::educations_output(education)
+```
+
+# Certification
+
+```{r}
+certification <- list(
+  list(date = "2020/09", name = "项目管理专业人士资格认证（PMP）", point = ""),
+  list(date = "2016/06", name = "国际交流英语考试（TOEIC，托业）", point = "795 / 990"),
+  list(date = "2015/06", name = "日本语能力测试N1级别", point = "130 / 180")
+)
+```
+
+```{r results='asis'}
+fangTemplates::certification_output(certification)
+```
+
+# Work Experience
+
+```{r}
+work_xp <- list(
+  list(
+    duration = "2020/08 - 2021/07",
+    company = "上海康水医疗科技有限公司",
+    title = "数据分析工程师",
+    description = c(
+      "1. 负责公司SaaS产品的统计分析模块的功能设计；",
+      "2. 负责产品的统计分析模块的相关算法的R语言实现；",
+      "3. 负责机器学习算法模型的设计和开发（Python）；",
+      "4. 负责内部算法文档和部分产品帮助文档编写。"
+    )
+  ),
+  list(
+    duration = "2019/06 - 2020/07", 
+    company = "上海奇弦智能科技有限公司",
+    title = "项目经理",
+    description = c(
+      "1. 与客户沟通业务需求，理解业务流程及相关数据情况，设计业务问题的解决方案；",
+      "2. 与算法团队确定具体模型细节及实现方案，对模型输出的准确性与可靠性进行验证；",
+      "3. 与开发团队沟通，确保项目交付物的按计划实施、交付；",
+      "4. 向客户进行模型结果的解读，模型报告的撰写，项目交付后的运营维护；",
+      "5. 配合客户进行项目外的数据分析工作，寻找业务优化与增长点，促成新项目的开展。"
+    )
+  ),
+  list(
+    duration = "2013/07 - 2015/07", 
+    company = "上海同达创业投资股份有限公司",
+    title = "数据分析助理",
+    description = c(
+      "1. 负责公司贸易部门相关产品的进销存数据的整理、统计、分析、预测，并形成周报、月报；",
+      "2. 定期开展主要产品的市场情况调研，包括渠道终端的销售情况，价格，陈列情况，竞品情况等；",
+      "3. 负责公司的报表自动化设计和实现（主要通过Excel VBA实现）；",
+      "4. 其他临时性的数据分析相关工作。"
+    )
+  )
+)
+```
+
+```{r results='asis'}
+fangTemplates::work_xp_output(work_xp)
+```
+
+\newpage
+\makeprofile
+
+# Project Experience
+
+```{r}
+project_xp <- list(
+  list(
+    duration = "2021/04 - 2021/06",
+    project_name = "疾病风险预测模型",
+    description = c(
+      "基于医院、体检中心的体检、查体、问卷等数据构建关于多种疾病的风险预测模型。项目中涉及的模型包括逻辑回归、随机森林、xgboost，多标签分类模型等。",
+      "项目职责：",
+      "1. 负责数据的清洗，预处理，模型设计和开发，模型调优（Python）；",
+      "2. 负责相关模型报告的撰写。"
+    )
+  ),
+  list(
+    duration = "2020/08 - 2021/03",
+    project_name = "临床医生科研辅助平台",
+    description = c(
+      "创业公司主打产品，该产品旨在帮助医务人员和医学生以最便捷的形式解决数据处理和统计问题。其统计分析模块提供差异性分析、相关性分析、回归分析、生存分析、样本量计算等统计工具。各统计工具会根据输入数据自动选择合适的分析方法，并将结果输出为可以直接使用于论文和期刊的格式。",
+      "项目职责：",
+      "1. 负责统计分析模块的功能设计；",
+      "2. 负责统计分析模块的算法开发（R语言）；",
+      "3. 负责相关文档的撰写。"
+    )
+  ),
+  list(
+    duration = "2019/10 - 2020/07",
+    project_name = "医药企业内部智能化推荐平台",
+    description = c(
+      "某世界五百强医药企业核心BU医药代表使用的智能化推荐平台。推荐平台利用医药代表、医生和医院的属性数据，历史拜访数据，各学术推广渠道数据，销量数据等数据，结合业务逻辑，运用机器学习方法和优化理论，为医药代表提供拜访路径规划、日/周拜访计划，月度/季度目标等推荐。",
+      "项目职责：",
+      "1. 作为项目经理负责项目的计划、实施、控制和交付；",
+      "2. 参与模型的设计，并负责对模型输出进行验证和解释；",
+      "3. 负责平台的功能设计及平台的功能测试。"
+    )
+  )
+)
+```
+
+```{r results='asis'}
+fangTemplates::project_xp_output(project_xp)
+```

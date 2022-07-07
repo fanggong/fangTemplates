@@ -6,17 +6,16 @@ job-title: "数据分析工程师"
 birthdate: "1991-06-11"
 address: "四川/成都"
 phone-number: "18179359123"
-site: "https://fanggong.pub"
 mail: "yongchao.fang\\@outlook.com"
+site: "https://github.com/fanggong"
 about-me: |
-  什么也不会\
-  什么都略懂
+  应用数学专业背景。熟练掌握主流的统计模型、机器学习方法。拥有较强从业务中抽象数学模型能力，能够独立完成数据提取与清洗、数据分析挖掘建模、数据可视化工作。有世界500强企业的数据挖掘项目的项目管理经验，跨部门跨团队的项目实施经验。有独立的运营部门指标体系构建经验。对数据可视化和动态报告非常感兴趣。
 skills:
   - {skill: 日语, point: 5}
   - {skill: 英语, point: 4}
   - {skill: 项目管理, point: 4}
-  - {skill: 机器学习, point: 4.5}
-  - {skill: 数据可视化, point: 5}
+  - {skill: 数据分析, point: 5}
+  - {skill: SQL, point: 5.5}
   - {skill: Python, point: 4.5}
   - {skill: R语言, point: 5.5}
 ---
@@ -50,24 +49,21 @@ education <- list(
 fangTemplates::educations_output(education)
 ```
 
-# Certification
-
-```{r}
-certification <- list(
-  list(date = "2020/09", name = "项目管理专业人士资格认证（PMP）", point = ""),
-  list(date = "2016/06", name = "国际交流英语考试（TOEIC，托业）", point = "795 / 990"),
-  list(date = "2015/06", name = "日本语能力测试N1级别", point = "130 / 180")
-)
-```
-
-```{r results='asis'}
-fangTemplates::certification_output(certification)
-```
-
 # Work Experience
 
 ```{r}
 work_xp <- list(
+  list(
+    duration = "2021/08 - 至今",
+    company = "成都库珀创新科技有限公司",
+    title = "数据分析师",
+    description = c(
+      "1. 作为数据BP负责杠杆业务线（主要包括运营、产品、风控）的数据支持工作；",
+      "2. 负责杠杆运营部门的周/月/季度会议的数据分析支持，输出专项分析报告；",
+      "3. 负责杠杆运营部门的数据指标体系的构建和日常监控，以及相关可视化报表的制作；",
+      "4. 对运营策略进行数据支持，对运营策略的效果进行评估，从而对策略调整做出建议。"
+    )
+  ),
   list(
     duration = "2020/08 - 2021/07",
     company = "上海康水医疗科技有限公司",
@@ -154,3 +150,18 @@ project_xp <- list(
 ```{r results='asis'}
 fangTemplates::project_xp_output(project_xp)
 ```
+
+# Certification
+
+```{r}
+certification <- list(
+  list(date = "2020/09", name = "项目管理专业人士资格认证（PMP）", point = ""),
+  list(date = "2016/06", name = "国际交流英语考试（TOEIC，托业）", point = "795 / 990"),
+  list(date = "2015/06", name = "日本语能力测试N1级别", point = "130 / 180")
+)
+```
+
+```{r results='asis'}
+fangTemplates::certification_output(certification)
+```
+
